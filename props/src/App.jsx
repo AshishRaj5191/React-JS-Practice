@@ -9,16 +9,27 @@ import MyArray from './component/MyArray'
 function App() {
   const [count, setCount] = useState(0)
   const arr = [1,2,3,4,5]
-  function btn_Clicked() {
+  const names = ['Ashish', 'Keshav', 'Rohan', 'Alok']
+
+  function btn_Clicked(e) {
+    console.log(e);
     alert('Button Clicked')
   }
 
   return (
     <>
-     <MyComponent caption='Click me coming from app.jsx'/>
-     <MyArray array = {arr}/>
-     <button onClick={btn_Clicked}>Click Me</button>
-     <button onClick={() => alert('Button Clicked')}>Click Me</button>
+    {names.map((elem) => {
+      return (
+        <ul key={elem}>
+          <li>{elem}</li>
+        </ul>
+      )
+    })}
+    {/* {names.map(elem => <ul><li>{elem}</li></ul> )} */}
+    <MyComponent caption='Click me coming from app.jsx'/>
+    <MyArray array = {arr}/>
+    <button onClick={btn_Clicked}>Click Me</button>
+    <button onClick={() => alert('Button Clicked')}>Click Me</button>
     </>
   )
 }
